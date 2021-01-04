@@ -120,6 +120,8 @@ class Collection(Record):
         """
         properties = []
         schema = self.get("schema")
+        if isinstance(schema, list):
+            return schema
         for id, item in schema.items():
             prop = {"id": id, "slug": slugify(item["name"])}
             prop.update(item)
